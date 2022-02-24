@@ -22,7 +22,7 @@ public class BookingController {
         return new ResponseEntity<>(bookingRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/bookings/{id")
+    @GetMapping(value = "/bookings/{id}")
     public ResponseEntity getBooking(@PathVariable Long id){
         Optional<Booking> booking = bookingRepository.findById(id);
         if(!booking.isPresent()) return new ResponseEntity<>(booking, HttpStatus.NOT_FOUND);

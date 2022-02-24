@@ -23,7 +23,7 @@ public class CustomerController {
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/customers/{id")
+    @GetMapping(value = "/customers/{id}")
     public ResponseEntity getCustomer(@PathVariable Long id) {
         Optional<Customer> customer = customerRepository.findById(id);
         if (!customer.isPresent()) return new ResponseEntity<>(customer, HttpStatus.NOT_FOUND);
