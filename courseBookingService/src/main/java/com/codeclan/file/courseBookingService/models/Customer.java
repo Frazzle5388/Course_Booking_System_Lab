@@ -1,13 +1,30 @@
 package com.codeclan.file.courseBookingService.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column( name = "name")
     private String name;
+
+    @Column(name = "town")
     private String town;
+
+    @Column(name = "age")
     private int age;
+
+    @OneToMany(mappedBy = "customer", fetch =FetchType.LAZY)
+    @JsonIgnoreProperties({"customer"})
     private List<Booking> bookings;
 
     public Customer(String name, String town, int age) {
@@ -18,6 +35,14 @@ public class Customer {
     }
 
     public Customer() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
