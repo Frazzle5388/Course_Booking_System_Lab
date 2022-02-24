@@ -25,7 +25,7 @@ public class CustomerController {
             @RequestParam(required = false, name = "course") String course
     ) {
         if (course != null){
-            return new ResponseEntity(customerRepository.findCustomerByBookingsCourse(course), HttpStatus.OK);
+            return new ResponseEntity(customerRepository.findCustomerByBookingsCourseName(course), HttpStatus.OK);
         }
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
